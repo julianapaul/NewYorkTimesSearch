@@ -96,6 +96,7 @@ public class ArticleResultFragment extends Fragment {
         Toast.makeText(getContext(), "Loading articles for \'" + query + "\'", Toast.LENGTH_SHORT).show();
         // TODO(Checkpoint 3): Implement this method to populate articles
 
+
         client.getArticlesByQuery(new CallbackResponse<List<Article>>() {
             @Override
             public void onSuccess(List<Article> models) {
