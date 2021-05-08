@@ -1,15 +1,19 @@
 package com.codepath.recyclerviewlab.models;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepath.recyclerviewlab.R;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +29,20 @@ public class ArticleResultsRecyclerViewAdapter extends RecyclerView.Adapter<Recy
         return new ArticleViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Article article = articleList.get(position);
         ArticleViewHolder articleViewHolder = (ArticleViewHolder) holder;
         articleViewHolder.headlineView.setText(article.headline.main);
+
+
         articleViewHolder.snippetView.setText(article.snippet);
+        articleViewHolder.dateView.setText(article.webUrl);
+/*      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+        LocalDateTime dateTime = LocalDateTime.parse(article.publishDate, formatter);*/
+        //articleViewHolder.dateView.setText(dateTime.toString());
+
 
     }
 
